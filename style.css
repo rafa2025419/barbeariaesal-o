@@ -1,0 +1,103 @@
+/* Reset simples */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Fundo geral da página */
+  body {
+    background-color: #ffe3dd;          /* salmão bem claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* Caixa do formulário */
+  form {
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    border-top: 8px solid #FA8072;      /* faixa salmão no topo */
+  }
+  
+  /* Título */
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FA8072;
+  }
+  
+  /* Espaçamento entre campos */
+  form p {
+    margin-bottom: 15px;
+  }
+  
+  /* Label dos campos */
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #444444;
+  }
+  
+  /* Campos de texto, select e textarea */
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    font-size: 14px;
+  }
+  
+  /* Efeito de foco nos campos */
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #FA8072;
+    outline: none;
+    box-shadow: 0 0 3px rgba(250,128,114,0.7);
+  }
+  
+  /* Textarea ajustável só na vertical */
+  textarea {
+    resize: vertical;
+  }
+  
+  /* Botões */
+  button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  /* Botão principal (submit) */
+  button[type="submit"] {
+    background-color: #FA8072;
+    color: #ffffff;
+  }
+  
+  /* Botão de reset */
+  button[type="reset"] {
+    background-color: #dddddd;
+    color: #333333;
+  }
+  
+  /* Hover nos botões */
+  button[type="submit"]:hover {
+    background-color: #e56c63;
+  }
+  
+  button[type="reset"]:hover {
+    background-color: #c5c5c5;
+  }
+  
