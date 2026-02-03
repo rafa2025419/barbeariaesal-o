@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Studio - Página Inicial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --salmão-principal: #FF8C69;
+            --salmão-claro: #FFA07A;
+            --salmão-escuro: #E67352;
+            --salmão-suave: #FFD9CC;
+            --salmão-fundo: #FFF8F6;
+            --dourado: #D4A16A;
+            --texto-escuro: #665;
+            --texto-claro: #AA8;
+            --branco: #FFFFFF;
+            --sombra: rgba(255, 140, 105, 0.15);
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--salmão-fundo);
+            color: var(--texto-escuro);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header e Navegação */
+        header {
+            background: linear-gradient(135deg, var(--branco) 0%, #FFFCFB 100%);
+            box-shadow: 0 4px 20px var(--sombra);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--salmão-suave);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            background: linear-gradient(to right, var(--salmão-principal), var(--salmão-claro));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--salmão-principal), var(--salmão-claro));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px var(--sombra);
+        }
+
+        .user-name {
+            font-weight: 500;
+            color: var(--texto-escuro);
+            font-size: 1.1rem;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-icon {
+            position: relative;
+            color: var(--salmão-principal);
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-icon:hover {
+            color: var(--salmão-escuro);
+            transform: translateY(-2px);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--salmão-escuro);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Banner Principal */
+        .hero {
+            padding: 60px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--texto-escuro);
+            line-height: 1.2;
+        }
+
+        .welcome-text span {
+            background: linear-gradient(to right, var(--salmão-principal), var(--salmão-escuro));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--texto-claro);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 35px;
+            background: linear-gradient(135deg, var(--salmão-principal), var(--salmão-claro));
+            color: var(--branco);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 140, 105, 0.3);
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255, 140, 105, 0.4);
+        }
+
+        .cta-button i {
+            font-size: 1.4rem;
+        }
+
+        /* Cards de Serviços */
+        .services-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--texto-escuro);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--salmão-principal), var(--salmão-claro));
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: var(--branco);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px var(--sombra);
+            transition: all 0.4s ease;
+            border: 1px solid var(--salmão-suave);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 140, 105, 0.25);
+        }
+
+        .service-image {
+            height: 180px;
+            background: linear-gradient(135deg, #FFE9E0, #FFD9CC);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--salmão-principal);
+            font-size: 3.5rem;
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--texto-escuro);
+        }
+
+        .service-description {
+            color: var(--texto-claro);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .service-price {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--salmão-principal);
+            margin-bottom: 20px;
+        }
+
+        .service-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--salmão-suave);
+        }
+
+        .service-duration, .service-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--texto-claro);
+            font-size: 0.9rem;
+        }
+
+        .book-button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--salmão-principal), var(--salmão-claro));
+            color: var(--branco);
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .book-button:hover {
+            background: linear-gradient(135deg, var(--salmão-escuro), var(--salmão-principal));
+        }
+
+        /* Agenda e Próximo Agendamento */
+        .appointment-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #FFFCFB 0%, #FFF8F6 100%);
+            border-radius: 30px;
+            margin: 40px 0;
+        }
+
+        .appointment-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .next-appointment {
+            background: var(--branco);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 25px var(--sombra);
+            border: 1px solid var(--salmão-suave);
+        }
+
+        .appointment-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--texto-escuro);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .appointment-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .detail-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #FFE9E0, #FFD9CC);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--salmão-principal);
+            font-size: 1.2rem;
+        }
+
+        .detail-content h4 {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--texto-escuro);
+        }
+
+        .detail-content p {
+            color: var(--texto-claro);
+        }
+
+        .appointment-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .action-button {
+            flex: 1;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .primary-action {
+            background: linear-gradient(135deg, var(--salmão-principal), var(--salmão-claro));
+            color: var(--branco);
+        }
+
+        .secondary-action {
+            background: transparent;
+            color: var(--salmão-principal);
+            border: 2px solid var(--salmão-suave);
+        }
+
+        .primary-action:hover, .secondary-action:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--sombra);
+        }
+
+        /* Promoções */
+        .promo-section {
+            padding: 60px 0;
+        }
+
+        .promo-card {
+            background: linear-gradient(135deg, var(--salmão-principal), var(--salmão-escuro));
+            border-radius: 25px;
+            padding: 40px;
+            color: var(--branco);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(255, 140, 105, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .promo-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .promo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .promo-description {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+
+        .promo-code {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Elementos Decorativos */
+        .decorative-element {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.08;
+            color: var(--salmão-principal);
+        }
+
+        .decor-1 {
+            top: 15%;
+            left: 5%;
+            font-size: 4rem;
+            transform: rotate(15deg);
+        }
+
+        .decor-2 {
+            bottom: 20%;
+            right: 5%;
+            font-size: 5rem;
+            transform: rotate(-20deg);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #FFFCFB 0%, #FFF8F6 100%);
+            padding: 60px 0 30px;
+            margin-top: 60px;
+            border-top: 1px solid var(--salmão-suave);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--texto-escuro);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--texto-claro);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--salmão-principal);
+            transform: translateX(5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--salmão-suave);
+            color: var(--texto-claro);
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .appointment-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .welcome-text {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .user-menu {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .welcome-text {
+                font-size: 2rem;
+            }
+            
+            .promo-card {
+                padding: 30px 20px;
+            }
+            
+            .decorative-element {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .appointment-actions {
+                flex-direction: column;
+            }
+            
+            .cta-button {
+                padding: 15px 25px;
+                font-size: 1.1rem;
+            }
+            
+            .service-card {
+                margin: 0 10px;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card, .next-appointment, .promo-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Elementos Decorativos -->
+    <div class="decorative-element decor-1">
+        <i class="fas fa-feather-alt"></i>
+    </div>
+    <div class="decorative-element decor-2">
+        <i class="fas fa-spa"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Divine Studio</a>
+            <div class="user-menu">
+                <div class="user-info">
+                    <div class="user-avatar">MC</div>
+                    <div class="user-name">Maria Clara</div>
+                </div>
+                <div class="nav-icons">
+                    <div class="nav-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="nav-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">2</span>
+                    </div>
+                    <div class="nav-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="welcome-text">Olá, <span>Maria Clara</span></h1>
+                <p class="subtitle">Seu refúgio de beleza e cuidado pessoal. Agende seu momento de transformação com os melhores profissionais.</p>
+                <a href="#agendar" class="cta-button">
+                    <i class="fas fa-calendar-plus"></i>
+                    Agendar Novo Serviço
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Serviços -->
+    <section class="services-section" id="agendar">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="services-grid">
+                <!-- Serviço 1 -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Corte e Escova</h3>
+                        <p class="service-description">Corte personalizado com análise de formato de rosto e finalização com escova profissional.</p>
+                        <div class="service-price">R$ 85,00</div>
+                        <div class="service-meta">
+                            <div class="service-duration">
+                                <i class="far fa-clock"></i>
+                                <span>60 min</span>
+                            </div>
+                            <div class="service-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                        <button class="book-button">Agendar Agora</button>
+                    </div>
+                </div>
+
+                <!-- Serviço 2 -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Coloração Premium</h3>
+                        <p class="service-description">Coloração com produtos de alta qualidade e tonalizantes que não agridem os fios.</p>
+                        <div class="service-price">R$ 150,00</div>
+                        <div class="service-meta">
+                            <div class="service-duration">
+                                <i class="far fa-clock"></i>
+                                <span>90 min</span>
+                            </div>
+                            <div class="service-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                        <button class="book-button">Agendar Agora</button>
+                    </div>
+                </div>
+
+                <!-- Serviço 3 -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Hidratação Profunda</h3>
+                        <p class="service-description">Tratamento intensivo para cabelos ressecados com máscara reconstrutora.</p>
+                        <div class="service-price">R$ 120,00</div>
+                        <div class="service-meta">
+                            <div class="service-duration">
+                                <i class="far fa-clock"></i>
+                                <span>45 min</span>
+                            </div>
+                            <div class="service-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <button class="book-button">Agendar Agora</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Agenda -->
+    <section class="appointment-section">
+        <div class="container">
+            <h2 class="section-title">Seus Agendamentos</h2>
+            <div class="appointment-container">
+                <div class="next-appointment">
+                    <h3 class="appointment-title">
+                        <i class="far fa-calendar-check"></i>
+                        Próximo Agendamento
+                    </h3>
+                    <div class="appointment-details">
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-cut"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Corte e Escova</h4>
+                                <p>Com João Silva</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="far fa-clock"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Sexta-feira, 15 de Outubro</h4>
+                                <p>14:30 - 15:30</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Divine Studio - Unidade Centro</h4>
+                                <p>Rua das Flores, 123</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="appointment-actions">
+                        <button class="action-button primary-action">Ver Detalhes</button>
+                        <button class="action-button secondary-action">Reagendar</button>
+                    </div>
+                </div>
+
+                <div class="next-appointment">
+                    <h3 class="appointment-title">
+                        <i class="fas fa-history"></i>
+                        Histórico Recente
+                    </h3>
+                    <div class="appointment-details">
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Coloração Premium</h4>
+                                <p>02 de Outubro, 2023</p>
+                                <p>Avaliação: ★★★★★</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Hidratação Profunda</h4>
+                                <p>25 de Setembro, 2023</p>
+                                <p>Avaliação: ★★★★★</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="appointment-actions">
+                        <button class="action-button primary-action">Ver Histórico Completo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Promoções -->
+    <section class="promo-section">
+        <div class="container">
+            <div class="promo-card">
+                <h3 class="promo-title">Promoção Especial Outubro</h3>
+                <p class="promo-description">Pacote completo de beleza: Corte + Hidratação + Escova por um preço especial. Aproveite esta oferta exclusiva!</p>
+                <div class="promo-code">DIVINE20</div>
+                <p class="promo-description">Use o código acima para obter 20% de desconto no seu próximo agendamento.</p>
+                <button class="cta-button" style="background: white; color: #FF8C69;">
+                    <i class="fas fa-gift"></i>
+                    Usar Promoção
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Divine Studio</h3>
+                    <p style="color: var(--texto-claro); margin-bottom: 20px;">Seu refúgio de beleza e elegância, onde cada detalhe é cuidado com perfeição.</p>
+                    <div class="social-icons" style="display: flex; gap: 15px;">
+                        <a href="#" style="color: var(--salmão-principal); font-size: 1.3rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: var(--salmão-principal); font-size: 1.3rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: var(--salmão-principal); font-size: 1.3rem;"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Meus Agendamentos</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Serviços</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Profissionais</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Promoções</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Rua das Flores, 123 - Centro</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> (11) 3456-7890</a></li>
+                        <li><a href="#"><i class="far fa-envelope"></i> contato@divinestudio.com</a></li>
+                        <li><a href="#"><i class="far fa-clock"></i> Seg-Sáb: 9h-20h</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Divine Studio. Todos os direitos reservados. | Agendamento profissional de beleza</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Interatividade da página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Botões de agendamento
+            const bookButtons = document.querySelectorAll('.book-button');
+            bookButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const serviceTitle = this.closest('.service-content').querySelector('.service-title').textContent;
+                    const servicePrice = this.closest('.service-content').querySelector('.service-price').textContent;
+                    
+                    // Efeito visual no clique
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Agendando...';
+                    this.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+                    
+                    setTimeout(() => {
+                        alert(`Agendamento de ${serviceTitle} (${servicePrice}) iniciado! Você será redirecionado para a seleção de horário.`);
+                        this.innerHTML = 'Agendar Agora';
+                        this.style.background = 'linear-gradient(135deg, #FF8C69, #FFA07A)';
+                    }, 1500);
+                });
+            });
+            
+            // Botões de ação
+            const actionButtons = document.querySelectorAll('.action-button');
+            actionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const buttonText = this.textContent;
+                    
+                    // Efeito visual no clique
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+                    
+                    setTimeout(() => {
+                        if (buttonText.includes('Detalhes')) {
+                            alert('Detalhes do agendamento:\n\nServiço: Corte e Escova\nProfissional: João Silva\nData: 15/10/2023\nHorário: 14:30 - 15:30\nLocal: Unidade Centro');
+                        } else if (buttonText.includes('Reagendar')) {
+                            alert('Redirecionando para a tela de reagendamento...');
+                        } else if (buttonText.includes('Histórico')) {
+                            alert('Redirecionando para o histórico completo de agendamentos...');
+                        }
+                        
+                        this.innerHTML = originalText;
+                    }, 1000);
+                });
+            });
+            
+            // Botão de promoção
+            const promoButton = document.querySelector('.promo-section .cta-button');
+            promoButton.addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Aplicando...';
+                
+                setTimeout(() => {
+                    alert('Promoção DIVINE20 aplicada com sucesso! Você terá 20% de desconto no seu próximo agendamento.');
+                    this.innerHTML = '<i class="fas fa-gift"></i> Promoção Aplicada';
+                    this.style.background = '#4CAF50';
+                    this.style.color = 'white';
+                }, 1500);
+            });
+            
+            // Ícones de notificação
+            const notificationIcon = document.querySelector('.fa-bell').closest('.nav-icon');
+            notificationIcon.addEventListener('click', function() {
+                const badge = this.querySelector('.notification-badge');
+                alert('Você tem 2 notificações:\n1. Lembrete: Seu agendamento é amanhã às 14:30\n2. Nova promoção disponível: DIVINE20');
+                badge.style.display = 'none';
+            });
+            
+            // Ícone do calendário
+            const calendarIcon = document.querySelector('.fa-calendar-alt').closest('.nav-icon');
+            calendarIcon.addEventListener('click', function() {
+                alert('Redirecionando para a sua agenda...');
+            });
+            
+            // Ícone do perfil
+            const profileIcon = document.querySelector('.fa-user-circle').closest('.nav-icon');
+            profileIcon.addEventListener('click', function() {
+                alert('Redirecionando para o seu perfil...');
+            });
+        });
+    </script>
+</body>
+</html>
