@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    
+    <style>
+      /* Reset e configurações globais */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        height: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: 'Arial', sans-serif;
+        /* Fundo delicado com padrão suave */
+        background: linear-gradient(135deg, #f8f9ff 0%, #e8f4f8 30%, #fff1f5 60%, #f0f8ff 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        position: relative;
+      }
+
+      /* Container principal perfeitamente centralizado */
+      .login-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        width: 100%;
+        padding: 20px;
+      }
+
+      .login-container {
+        background: rgba(255, 255, 255, 0.98);
+        padding: 50px 40px;
+        border-radius: 25px;
+        box-shadow: 
+          0 25px 50px rgba(250, 128, 114, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        width: 100%;
+        max-width: 420px;
+        backdrop-filter: blur(15px);
+        /* Borda decorativa ESTÁTICA */
+        border: 3px solid transparent;
+        background-clip: padding-box;
+        background-origin: border-box;
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Borda externa decorativa ESTÁTICA (sem rotação) */
+      .login-container::before {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        background: linear-gradient(45deg, #FA8072, #FF7F50, #FFA07A, #FA8072);
+        border-radius: 28px;
+        z-index: -1;
+        /* Sem animação de rotação */
+        filter: blur(1px);
+        opacity: 0.8;
+      }
+
+      /* Ícone decorativo no topo */
+      .login-container::after {
+        content: '🔐';
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        background: rgba(255, 255, 255, 0.9);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 20px rgba(250, 128, 114, 0.2);
+        border: 3px solid #FA8072;
+      }
+
+      /* Título com decoração */
+      .login-container h1 {
+        text-align: center;
+        color: #d63384;
+        margin-bottom: 40px;
+        font-size: 32px;
+        font-weight: bold;
+        text-shadow: 0 2px 4px rgba(250, 128, 114, 0.2);
+        position: relative;
+      }
+
+      .login-container h1::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #FA8072, transparent);
+        border-radius: 2px;
+      }
+
+      /* Labels com ícones */
+      .login-container label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        color: #444;
+        font-weight: 600;
+        font-size: 15px;
+        gap: 8px;
+      }
+
+      /* Inputs com bordas decorativas */
+      .login-container input[type="text"],
+      .login-container input[type="password"] {
+        width: 100%;
+        padding: 18px 20px 18px 50px;
+        margin-bottom: 25px;
+        border: 2px solid #f0f0f0;
+        border-radius: 15px;
+        font-size: 16px;
+        background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        transition: all 0.3s ease;
+        font-weight: 500;
+        position: relative;
+      }
+
+      .login-container input:focus {
+        outline: none;
+        border-color: #FA8072;
+        box-shadow: 
+          0 0 0 4px rgba(250, 128, 114, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 1);
+        transform: translateY(-2px);
+      }
+
+      /* Ícones nos inputs */
+      .login-container input[type="text"] {
+        background-image: linear-gradient(90deg, #FA8072 40px, transparent 40px);
+        background-size: 40px 100%;
+        background-repeat: no-repeat;
+        background-position: left 16px center;
+      }
+
+      .login-container input[type="password"] {
+        background-image: linear-gradient(90deg, #FF7F50 40px, transparent 40px);
+        background-size: 40px 100%;
+        background-repeat: no-repeat;
+        background-position: left 16px center;
+      }
+
+      /* Botão super decorado */
+      .login-container button {
+        width: 100%;
+        padding: 18px;
+        background: linear-gradient(145deg, #FA8072, #FF7F50);
+        color: white;
+        border: none;
+        border-radius: 15px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 
+          0 10px 30px rgba(250, 128, 114, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
+
+      .login-container button:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 
+          0 20px 40px rgba(250, 128, 114, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      }
+
+      /* Múltiplos efeitos shimmer */
+      .login-container button::before,
+      .login-container button::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transition: all 0.6s ease;
+      }
+
+      .login-container button::before {
+        left: -100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      }
+
+      .login-container button:hover::before {
+        left: 100%;
+      }
+
+      .login-container button::after {
+        left: 0;
+        background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+        transform: scale(0) rotate(45deg);
+      }
+
+      .login-container button:hover::after {
+        transform: scale(1) rotate(45deg);
+      }
+
+      /* Separador decorado */
+      .login-container hr {
+        border: none;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #FA8072, #FF7F50, #FA8072, transparent);
+        margin: 30px 0;
+        border-radius: 2px;
+      }
+
+      /* Info com cards pequenos */
+      .login-container .info {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+        line-height: 1.5;
+      }
+
+      .login-container .info-item {
+        background: linear-gradient(145deg, #f8f9fa, #ffffff);
+        padding: 12px 20px;
+        border-radius: 12px;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      }
+
+      .login-container .info b {
+        color: #d63384;
+        font-weight: 700;
+      }
+
+      /* Termos decorados */
+      .login-container .terms {
+        font-size: 13px;
+        color: #888;
+        text-align: center;
+        margin-top: 25px;
+        font-style: italic;
+        padding: 15px;
+        background: rgba(250, 128, 114, 0.05);
+        border-radius: 10px;
+        border-left: 4px solid #FA8072;
+      }
+
+      /* Responsivo */
+      @media (max-width: 480px) {
+        .login-container {
+          padding: 35px 25px;
+          margin: 10px;
+        }
+        
+        .login-container h1 {
+          font-size: 26px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-wrapper">
+      <div class="login-container">
+        <h1>Bem-vindo ao Login</h1>
+
+        <form>
+          <label for="usuario">
+            👤 Usuário:
+          </label>
+          <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário" required>
+
+          <label for="senha">
+            🔒 Senha:
+          </label>
+          <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+          <button type="submit">Entrar Agora ✨</button>
+        </form>
+
+        <hr>
+
+        <div class="info">
+          <div class="info-item">
+            <b>Usuário de teste:</b> admin
+          </div>
+          <div class="info-item">
+            <b>Senha de teste:</b> 123456
+          </div>
+        </div>
+
+        <p class="terms">
+          Ao fazer login, você concorda com nossos termos de uso.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
