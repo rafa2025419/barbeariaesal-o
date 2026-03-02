@@ -5,452 +5,206 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Divine Studio - Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* Mesmos estilos da versão anterior (tons de salmão) */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --salmão-principal: #FF8C69;
+            --salmão-claro: #FFA07A;
+            --salmão-escuro: #E67352;
+            --salmão-suave: #FFD9CC;
+            --salmão-fundo: #FFF8F6;
+            --dourado: #D4A16A;
+            --texto-escuro: #665;
+            --texto-claro: #AA8;
+            --branco: #FFFFFF;
+            --sombra: rgba(255, 140, 105, 0.15);
+        }
+
         body {
             font-family: 'Raleway', sans-serif;
-            background: linear-gradient(135deg, #FFF8F6 0%, #FFEFEB 100%);
+            background: linear-gradient(135deg, var(--salmão-fundo) 0%, #FFEFEB 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            color: #665;
+            color: var(--texto-escuro);
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Elementos decorativos de fundo */
+        /* Elementos decorativos */
         .decorative-bg {
             position: absolute;
             z-index: 0;
             opacity: 0.08;
+            color: var(--salmão-principal);
         }
 
-        .flower-1 {
-            top: 5%;
+        .decor-1 {
+            top: 10%;
             left: 5%;
-            font-size: 3rem;
-            color: #FF8C69;
+            font-size: 4rem;
             transform: rotate(15deg);
         }
 
-        .flower-2 {
+        .decor-2 {
             bottom: 10%;
             right: 5%;
-            font-size: 4rem;
-            color: #FF8C69;
+            font-size: 5rem;
             transform: rotate(-20deg);
         }
 
-        .scissors {
-            top: 15%;
-            right: 8%;
-            font-size: 2.5rem;
-            color: #D4A16A;
-            transform: rotate(45deg);
-        }
-
-        .comb {
-            bottom: 20%;
-            left: 10%;
-            font-size: 3rem;
-            color: #D4A16A;
-            transform: rotate(-30deg);
-        }
-
-        .heart {
-            top: 50%;
-            left: 7%;
-            font-size: 2rem;
-            color: #FF8C69;
-        }
-
-        .wave {
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23FF8C69' fill-opacity='0.05'%3E%3C/path%3E%3C/svg%3E");
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        /* Container principal */
         .login-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             width: 90%;
             max-width: 420px;
-            background-color: #FFFFFF;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(255, 140, 105, 0.12);
+            background-color: var(--branco);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px var(--sombra);
             padding: 40px 30px;
             position: relative;
             z-index: 1;
-            overflow: hidden;
-            border: 1px solid #FFE2D9;
+            border: 1px solid var(--salmão-suave);
+            animation: fadeIn 0.6s ease-out;
         }
 
-        /* Efeito de brilho sutil */
-        .login-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.3;
-            z-index: -1;
-        }
-
-        /* Cabeçalho com logo */
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            width: 100%;
-            position: relative;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .logo {
             font-family: 'Great Vibes', cursive;
             font-size: 3.2rem;
-            background: linear-gradient(to right, #FF8C69, #FFA07A);
+            background: linear-gradient(to right, var(--salmão-principal), var(--salmão-claro));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-align: center;
             margin-bottom: 5px;
-            text-shadow: 2px 2px 4px rgba(255, 140, 105, 0.1);
-            letter-spacing: 1px;
         }
 
         .slogan {
             font-family: 'Playfair Display', serif;
-            font-size: 0.9rem;
-            color: #D4A16A;
-            font-weight: 500;
+            color: var(--dourado);
+            text-align: center;
+            font-size: 1rem;
             letter-spacing: 2px;
-            text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-            padding: 0 10px;
-        }
-
-        .slogan::before, .slogan::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 30px;
-            height: 1px;
-            background-color: #FFD1B9;
-        }
-
-        .slogan::before {
-            left: -35px;
-        }
-
-        .slogan::after {
-            right: -35px;
-        }
-
-        /* Seleção de tipo de usuário */
-        .user-type-selector {
-            display: flex;
-            width: 100%;
             margin-bottom: 30px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(255, 140, 105, 0.08);
-            background-color: #FFF9F7;
-            border: 1px solid #FFE9E0;
         }
 
-        .user-option {
+        /* Seletor de perfil */
+        .profile-selector {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .profile-option {
             flex: 1;
             text-align: center;
-            padding: 18px 10px;
+            padding: 15px;
+            border: 2px solid var(--salmão-suave);
+            border-radius: 15px;
             cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            background-color: #FFF9F7;
+            transition: all 0.3s;
+            background: var(--salmão-fundo);
         }
 
-        .user-option.active {
-            background: linear-gradient(135deg, #FFE9E0 0%, #FFD9CC 100%);
+        .profile-option.active {
+            background: linear-gradient(135deg, #FFE9E0, #FFD9CC);
+            border-color: var(--salmão-principal);
         }
 
-        .user-option:hover:not(.active) {
-            background-color: #FFF0EB;
-        }
-
-        .user-option i {
-            font-size: 1.8rem;
+        .profile-option i {
+            font-size: 2rem;
+            color: var(--salmão-principal);
             margin-bottom: 10px;
+        }
+
+        .profile-option span {
             display: block;
-            color: #FF8C69;
-            transition: all 0.3s ease;
-        }
-
-        .user-option.active i {
-            color: #E67352;
-            transform: scale(1.1);
-        }
-
-        .user-option h3 {
-            font-family: 'Playfair Display', serif;
             font-weight: 500;
-            font-size: 1.1rem;
-            color: #776;
-            transition: all 0.3s ease;
-        }
-
-        .user-option.active h3 {
-            color: #664;
-            font-weight: 600;
-        }
-
-        /* Indicador de seleção */
-        .user-option.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40%;
-            height: 3px;
-            background: linear-gradient(to right, #FF8C69, #FFA07A);
-            border-radius: 2px;
         }
 
         /* Formulário de login */
-        .login-form {
-            width: 100%;
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .login-form.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .form-group {
-            margin-bottom: 22px;
+            margin-bottom: 25px;
             position: relative;
         }
 
         .form-group i {
             position: absolute;
-            left: 18px;
+            left: 20px;
             top: 50%;
             transform: translateY(-50%);
-            color: #FF8C69;
+            color: var(--salmão-principal);
             font-size: 1.1rem;
-            transition: all 0.3s;
         }
 
         .form-control {
             width: 100%;
-            padding: 16px 16px 16px 50px;
-            border: 1px solid #FFD9CC;
-            border-radius: 12px;
+            padding: 18px 20px 18px 50px;
+            border: 1px solid var(--salmão-suave);
+            border-radius: 15px;
             font-size: 1rem;
             font-family: 'Raleway', sans-serif;
-            color: #665;
-            background-color: #FFFCFB;
+            background: var(--salmão-fundo);
             transition: all 0.3s;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: #FF8C69;
+            border-color: var(--salmão-principal);
             box-shadow: 0 0 0 3px rgba(255, 140, 105, 0.15);
-            background-color: #FFFFFF;
+            background: var(--branco);
         }
 
-        .form-control:focus + i {
-            color: #E67352;
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .form-control::placeholder {
-            color: #BB9;
-        }
-
-        .login-btn {
+        .btn {
             width: 100%;
-            padding: 17px;
-            background: linear-gradient(135deg, #FF8C69 0%, #FFA07A 100%);
-            color: white;
+            padding: 18px;
+            border-radius: 15px;
             border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
             font-weight: 600;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s;
             font-family: 'Raleway', sans-serif;
-            letter-spacing: 1px;
-            margin-top: 10px;
-            box-shadow: 0 6px 20px rgba(255, 140, 105, 0.25);
-            position: relative;
-            overflow: hidden;
         }
 
-        .login-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.7s;
+        .btn-primary {
+            background: linear-gradient(135deg, var(--salmão-principal), var(--salmão-claro));
+            color: var(--branco);
+            margin-top: 15px;
         }
 
-        .login-btn:hover {
+        .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 140, 105, 0.35);
+            box-shadow: 0 10px 25px rgba(255, 140, 105, 0.3);
         }
 
-        .login-btn:hover::after {
-            left: 100%;
-        }
-
-        .login-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Links adicionais */
         .links {
             display: flex;
             justify-content: space-between;
             margin-top: 25px;
-            font-size: 0.85rem;
-        }
-
-        .link {
-            color: #E67352;
-            text-decoration: none;
-            transition: all 0.2s;
-            position: relative;
-            padding-bottom: 2px;
-        }
-
-        .link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: #E67352;
-            transition: width 0.3s;
-        }
-
-        .link:hover {
-            color: #C55A3A;
-        }
-
-        .link:hover::after {
-            width: 100%;
-        }
-
-        /* Rodapé */
-        .footer {
-            margin-top: 35px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #AA8;
-            width: 100%;
-            padding-top: 20px;
-            border-top: 1px solid #FFE9E0;
-        }
-
-        /* Divisor estilizado */
-        .divider {
-            display: flex;
-            align-items: center;
-            margin: 30px 0;
-            width: 100%;
-            color: #D4A16A;
             font-size: 0.9rem;
         }
 
-        .divider::before, .divider::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(to right, transparent, #FFD9CC, transparent);
-        }
-
-        .divider span {
-            padding: 0 20px;
-            background-color: #FFFFFF;
-            font-style: italic;
-        }
-
-        /* Login social */
-        .social-login {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 25px;
-        }
-
-        .social-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 1px solid #FFD9CC;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .link {
+            color: var(--salmão-escuro);
+            text-decoration: none;
+            transition: color 0.3s;
             cursor: pointer;
-            transition: all 0.3s;
-            color: #776;
-            position: relative;
-            overflow: hidden;
         }
 
-        .social-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #FFE9E0 0%, #FFD9CC 100%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .social-btn i {
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(255, 140, 105, 0.15);
-            color: #E67352;
-        }
-
-        .social-btn:hover::before {
-            opacity: 1;
+        .link:hover {
+            color: var(--salmão-principal);
+            text-decoration: underline;
         }
 
         /* Responsividade */
@@ -463,280 +217,95 @@
                 font-size: 2.8rem;
             }
             
-            .user-option {
-                padding: 15px 5px;
+            .profile-selector {
+                flex-direction: column;
+                gap: 10px;
             }
-            
-            .user-option i {
-                font-size: 1.6rem;
-            }
-            
-            .decorative-bg {
-                opacity: 0.05;
-            }
-            
-            .slogan::before, .slogan::after {
-                width: 20px;
-            }
-            
-            .slogan::before {
-                left: -25px;
-            }
-            
-            .slogan::after {
-                right: -25px;
-            }
-        }
-
-        /* Animações suaves */
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(15deg); }
-            50% { transform: translateY(-10px) rotate(15deg); }
-        }
-
-        @keyframes float2 {
-            0%, 100% { transform: translateY(0) rotate(-20deg); }
-            50% { transform: translateY(-10px) rotate(-20deg); }
-        }
-
-        .flower-1 {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .flower-2 {
-            animation: float2 8s ease-in-out infinite;
-        }
-
-        /* Efeito de brilho para elementos ativos */
-        .login-container {
-            position: relative;
-        }
-
-        .login-container::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #FF8C69, #FFA07A, #FF8C69);
-            border-radius: 22px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .login-container:hover::after {
-            opacity: 0.3;
         }
     </style>
 </head>
 <body>
-    <!-- Elementos decorativos de fundo -->
-    <div class="decorative-bg flower-1">
+    <!-- Elementos decorativos -->
+    <div class="decorative-bg decor-1">
         <i class="fas fa-feather-alt"></i>
     </div>
-    <div class="decorative-bg flower-2">
-        <i class="fas fa-feather"></i>
+    <div class="decorative-bg decor-2">
+        <i class="fas fa-spa"></i>
     </div>
-    <div class="decorative-bg scissors">
-        <i class="fas fa-cut"></i>
-    </div>
-    <div class="decorative-bg comb">
-        <i class="fas fa-air-freshener"></i>
-    </div>
-    <div class="decorative-bg heart">
-        <i class="fas fa-heart"></i>
-    </div>
-    <div class="decorative-bg wave"></div>
 
-    <!-- Container principal de login -->
     <div class="login-container">
-        <!-- Cabeçalho com logo -->
-        <div class="header">
-            <h1 class="logo">Divine Studio</h1>
-            <p class="slogan">Beleza & Elegância</p>
-        </div>
+        <div class="logo">Divine Studio</div>
+        <div class="slogan">Beleza & Elegância</div>
 
-        <!-- Seleção de tipo de usuário -->
-        <div class="user-type-selector">
-            <div class="user-option active" id="client-option" onclick="selectUserType('client')">
+        <!-- Seletor de perfil -->
+        <div class="profile-selector">
+            <div class="profile-option active" id="option-client" onclick="selectProfile('client')">
                 <i class="fas fa-user-circle"></i>
-                <h3>Cliente</h3>
+                <span>Cliente</span>
             </div>
-            <div class="user-option" id="stylist-option" onclick="selectUserType('stylist')">
+            <div class="profile-option" id="option-stylist" onclick="selectProfile('stylist')">
                 <i class="fas fa-cut"></i>
-                <h3>Cabeleireiro</h3>
+                <span>Cabeleireiro</span>
             </div>
         </div>
 
-        <!-- Formulário de login para cliente -->
-        <form class="login-form active" id="client-form">
+        <!-- Formulário de login -->
+        <form id="loginForm">
             <div class="form-group">
                 <i class="fas fa-envelope"></i>
-                <input type="email" class="form-control" placeholder="E-mail" required>
+                <input type="email" class="form-control" id="email" placeholder="E-mail" required>
             </div>
             <div class="form-group">
                 <i class="fas fa-lock"></i>
-                <input type="password" class="form-control" placeholder="Senha" required>
+                <input type="password" class="form-control" id="password" placeholder="Senha" required>
             </div>
-            <button type="submit" class="login-btn">Entrar como Cliente</button>
-            
-            <div class="divider">
-                <span>Ou entre com</span>
-            </div>
-            
-            <div class="social-login">
-                <div class="social-btn">
-                    <i class="fab fa-google"></i>
-                </div>
-                <div class="social-btn">
-                    <i class="fab fa-facebook-f"></i>
-                </div>
-                <div class="social-btn">
-                    <i class="fab fa-apple"></i>
-                </div>
-            </div>
+            <button type="submit" class="btn btn-primary" id="loginBtn">Entrar</button>
         </form>
 
-        <!-- Formulário de login para cabeleireiro -->
-        <form class="login-form" id="stylist-form">
-            <div class="form-group">
-                <i class="fas fa-user-tie"></i>
-                <input type="text" class="form-control" placeholder="Usuário ou ID" required>
-            </div>
-            <div class="form-group">
-                <i class="fas fa-lock"></i>
-                <input type="password" class="form-control" placeholder="Senha profissional" required>
-            </div>
-            <button type="submit" class="login-btn">Entrar como Cabeleireiro</button>
-            
-            <div class="divider">
-                <span>Acesso restrito</span>
-            </div>
-            
-            <div class="social-login">
-                <div class="social-btn">
-                    <i class="fas fa-fingerprint"></i>
-                </div>
-                <div class="social-btn">
-                    <i class="fas fa-qrcode"></i>
-                </div>
-            </div>
-        </form>
-
-        <!-- Links adicionais -->
+        <!-- Links -->
         <div class="links">
             <a href="#" class="link">Esqueci minha senha</a>
-            <a href="#" class="link">Primeiro acesso?</a>
-        </div>
-
-        <!-- Rodapé -->
-        <div class="footer">
-            <p>&copy; 2026 Divine Studio. Todos os direitos reservados.</p>
-            <p>Agendamento profissional de beleza</p>
+            <a href="cadastro.html" class="link" id="registerLink">Cadastre-se</a>
         </div>
     </div>
 
     <script>
-        // Função para alternar entre os tipos de usuário
-        function selectUserType(type) {
-            // Atualizar a seleção visual
-            const clientOption = document.getElementById('client-option');
-            const stylistOption = document.getElementById('stylist-option');
-            const clientForm = document.getElementById('client-form');
-            const stylistForm = document.getElementById('stylist-form');
-            
-            if (type === 'client') {
-                clientOption.classList.add('active');
-                stylistOption.classList.remove('active');
-                clientForm.classList.add('active');
-                stylistForm.classList.remove('active');
-            } else {
-                stylistOption.classList.add('active');
-                clientOption.classList.remove('active');
-                stylistForm.classList.add('active');
-                clientForm.classList.remove('active');
-            }
+        // Estado do perfil selecionado
+        let selectedProfile = 'client'; // 'client' ou 'stylist'
+
+        function selectProfile(profile) {
+            selectedProfile = profile;
+            // Atualizar visual
+            document.getElementById('option-client').classList.remove('active');
+            document.getElementById('option-stylist').classList.remove('active');
+            document.getElementById(`option-${profile}`).classList.add('active');
         }
 
-        // Adicionar funcionalidade aos formulários
-        document.getElementById('client-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Simulação de login com efeito visual
-            const btn = this.querySelector('.login-btn');
-            const originalText = btn.textContent;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Entrando...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> Login realizado!';
-                btn.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
-                
-                setTimeout(() => {
-                    alert('Login de cliente realizado com sucesso! Redirecionando para o agendamento...');
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-                    btn.style.background = 'linear-gradient(135deg, #FF8C69 0%, #FFA07A 100%)';
-                }, 800);
-            }, 1500);
+        // Lidar com o envio do formulário
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita recarregar a página
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            // Validação simples
+            if (!email || !password) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            // Simulação de login - Aqui você pode integrar com uma API real
+            // Por enquanto, redireciona baseado no perfil selecionado
+            if (selectedProfile === 'client') {
+                // Redirecionar para a página do cliente
+                window.location.href = 'cliente.html';
+            } else {
+                // Redirecionar para a página do cabeleireiro
+                window.location.href = 'profissional.html';
+            }
         });
 
-        document.getElementById('stylist-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Simulação de login com efeito visual
-            const btn = this.querySelector('.login-btn');
-            const originalText = btn.textContent;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verificando...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> Acesso permitido!';
-                btn.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
-                
-                setTimeout(() => {
-                    alert('Login de cabeleireiro realizado com sucesso! Redirecionando para a agenda profissional...');
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-                    btn.style.background = 'linear-gradient(135deg, #FF8C69 0%, #FFA07A 100%)';
-                }, 800);
-            }, 1500);
-        });
-
-        // Adicionar interatividade aos botões de login social
-        document.querySelectorAll('.social-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const icon = this.querySelector('i').className;
-                this.style.transform = 'translateY(-5px) scale(1.1)';
-                
-                setTimeout(() => {
-                    this.style.transform = 'translateY(-5px)';
-                }, 300);
-                
-                if (icon.includes('google')) {
-                    alert('Login com Google selecionado');
-                } else if (icon.includes('facebook')) {
-                    alert('Login com Facebook selecionado');
-                } else if (icon.includes('apple')) {
-                    alert('Login com Apple selecionado');
-                } else if (icon.includes('fingerprint')) {
-                    alert('Acesso por biometria selecionado');
-                } else if (icon.includes('qrcode')) {
-                    alert('Acesso por QR Code selecionado');
-                }
-            });
-        });
-
-        // Efeito de foco nos campos de entrada
-        document.querySelectorAll('.form-control').forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.style.transform = 'translateY(-2px)';
-            });
-            
-            input.addEventListener('blur', function() {
-                this.parentElement.style.transform = 'translateY(0)';
-            });
-        });
+        // O link "Cadastre-se" já tem href="cadastro.html" no HTML, então nenhum JS extra é necessário.
     </script>
 </body>
 </html>
