@@ -460,10 +460,15 @@
     <div class="decorative-bg decor-3"><i class="fas fa-cut"></i></div>
 
     <div class="admin-container">
-        <!-- Botão de voltar ao painel profissional -->
-        <a href="profissional.html" class="back-to-professional">
-            <i class="fas fa-arrow-left"></i> Voltar ao Painel Profissional
-        </a>
+<!-- Botões de navegação -->
+        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+            <a href="profissional.html" class="back-to-professional">
+                <i class="fas fa-arrow-left"></i> Voltar ao Painel Profissional
+            </a>
+            <a href="index.html" class="back-to-professional" onclick="logout(event)" style="margin-bottom: 0;">
+                <i class="fas fa-sign-out-alt"></i> Sair (Logout)
+            </a>
+        </div>
 
         <!-- Título principal (visível apenas no menu inicial) -->
         <div id="mainTitle">

@@ -1,400 +1,308 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Divine Studio - Cadastro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Studio - Cadastro de Conta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+        :root {
+            --salmão-principal: #FF8C69;
+            --salmão-claro: #FFA07A;
+            --salmão-escuro: #E67352;
+            --salmão-suave: #FFD9CC;
+            --salmão-fundo: #FFF8F6;
+            --dourado: #D4A16A;
+            --texto-escuro: #665;
+            --texto-claro: #AA8;
+            --branco: #FFFFFF;
+            --sombra: rgba(255, 140, 105, 0.15);
+        }
 
-    :root {
-      --salmão-principal: #FF8C69;
-      --salmão-claro: #FFA07A;
-      --salmão-escuro: #E67352;
-      --salmão-suave: #FFD9CC;
-      --salmão-fundo: #FFF8F6;
-      --dourado: #D4A16A;
-      --texto-escuro: #665;
-      --texto-claro: #AA8;
-      --branco: #FFFFFF;
-      --sombra: rgba(255, 140, 105, 0.15);
-    }
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, var(--salmão-fundo) 0%, #FFEFEB 100%);
+            color: var(--texto-escuro);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-    body {
-      background: linear-gradient(135deg, var(--salmão-principal) 0%, var(--salmão-claro) 100%);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
+        /* Elementos decorativos */
+        .decorative-bg {
+            position: fixed;
+            z-index: 0;
+            opacity: 0.05;
+            color: var(--salmão-principal);
+            pointer-events: none;
+        }
 
-    h1 {
-      color: #fff;
-      margin-bottom: 30px;
-      font-size: 2.5em;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-      text-align: center;
-      font-weight: 600;
-    }
+        .decor-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 6rem;
+            transform: rotate(15deg);
+        }
 
-    form {
-      background: white;
-      max-width: 700px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px var(--sombra);
-      backdrop-filter: blur(10px);
-      transition: transform 0.3s ease;
-      border: 1px solid var(--salmão-suave);
-    }
+        .decor-2 {
+            bottom: 15%;
+            right: 5%;
+            font-size: 8rem;
+            transform: rotate(-20deg);
+        }
 
-    form:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 25px 70px rgba(255, 140, 105, 0.4);
-    }
+        .decor-3 {
+            top: 30%;
+            right: 10%;
+            font-size: 4rem;
+            transform: rotate(45deg);
+        }
 
-    p {
-      margin-bottom: 20px;
-    }
+        .register-container {
+            background: var(--branco);
+            border-radius: 30px;
+            box-shadow: 0 20px 40px var(--sombra);
+            padding: 40px 35px;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid var(--salmão-suave);
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 0.8s ease-out;
+        }
 
-    label {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--salmão-escuro);
-      font-weight: 600;
-      font-size: 0.95em;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    input, select, textarea {
-      width: 100%;
-      padding: 14px 18px;
-      border: 2px solid var(--salmão-suave);
-      border-radius: 12px;
-      font-size: 15px;
-      transition: all 0.3s ease;
-      background: var(--salmão-fundo);
-    }
+        .logo {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            background: linear-gradient(to right, var(--salmão-principal), var(--salmão-claro));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            margin-bottom: 5px;
+        }
 
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--salmão-principal);
-      background: white;
-      box-shadow: 0 5px 15px var(--sombra);
-    }
+        .slogan {
+            font-family: 'Playfair Display', serif;
+            color: var(--dourado);
+            text-align: center;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
 
-    input:hover, select:hover, textarea:hover {
-      border-color: var(--salmão-claro);
-    }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--texto-escuro);
+            text-align: center;
+            margin-bottom: 25px;
+        }
 
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-    /* Grid para data e hora */
-    .datetime-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--texto-escuro);
+            font-size: 0.95rem;
+        }
 
-    .datetime-grid p {
-      margin-bottom: 0;
-    }
+        label i {
+            color: var(--salmão-principal);
+            margin-right: 5px;
+        }
 
-    /* Estilo para os botões */
-    .button-group {
-      display: flex;
-      gap: 15px;
-      margin-top: 30px;
-    }
+        input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--salmão-suave);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Raleway', sans-serif;
+            background: var(--salmão-fundo);
+            transition: all 0.3s;
+            color: var(--texto-escuro);
+        }
 
-    button {
-      flex: 1;
-      padding: 16px 24px;
-      border: none;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      background: linear-gradient(135deg, var(--salmão-principal) 0%, var(--salmão-claro) 100%);
-      color: white;
-      box-shadow: 0 10px 20px var(--sombra);
-    }
+        input:focus {
+            outline: none;
+            border-color: var(--salmão-principal);
+            box-shadow: 0 0 0 3px rgba(255, 140, 105, 0.15);
+            background: var(--branco);
+        }
 
-    button[type="reset"] {
-      background: linear-gradient(135deg, var(--salmão-claro) 0%, var(--salmão-principal) 100%);
-      box-shadow: 0 10px 20px rgba(255, 160, 122, 0.3);
-    }
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
 
-    button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(255, 140, 105, 0.4);
-    }
+        .btn {
+            flex: 1;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Raleway', sans-serif;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
 
-    button[type="reset"]:hover {
-      box-shadow: 0 15px 30px rgba(255, 160, 122, 0.4);
-    }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--salmão-principal), var(--salmão-claro));
+            color: var(--branco);
+            box-shadow: 0 5px 15px var(--sombra);
+        }
 
-    button:active {
-      transform: translateY(-1px);
-    }
+        .btn-secondary {
+            background: var(--salmão-fundo);
+            color: var(--salmão-escuro);
+            border: 1px solid var(--salmão-suave);
+        }
 
-    /* Placeholder styling */
-    ::placeholder {
-      color: #ffb6b6;
-      opacity: 0.7;
-      font-size: 14px;
-    }
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 140, 105, 0.25);
+        }
 
-    /* Estilo para o select */
-    select {
-      appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF8C69' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 15px center;
-      background-size: 15px;
-    }
+        .login-link {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--texto-claro);
+        }
 
-    /* Estilo para campos obrigatórios */
-    input:required, select:required, textarea:required {
-      background-image: radial-gradient(circle, var(--salmão-principal) 3px, transparent 3px);
-      background-repeat: no-repeat;
-      background-position: right 15px top 15px;
-      background-size: 8px;
-    }
+        .login-link a {
+            color: var(--salmão-principal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
 
-    /* Responsividade */
-    @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-      
-      h1 {
-        font-size: 2em;
-      }
-      
-      form {
-        padding: 25px;
-      }
-      
-      .datetime-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-      
-      .button-group {
-        flex-direction: column;
-      }
-      
-      button {
-        width: 100%;
-      }
-    }
+        .login-link a:hover {
+            color: var(--salmão-escuro);
+            text-decoration: underline;
+        }
 
-    /* Animações suaves */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    form {
-      animation: fadeIn 0.6s ease-out;
-    }
-
-    /* Estilo para o campo de telefone com máscara visual */
-    input[type="tel"] {
-      font-family: monospace;
-      letter-spacing: 1px;
-    }
-
-    /* Indicador visual de campo preenchido */
-    input:not(:placeholder-shown):valid,
-    select:valid,
-    textarea:not(:placeholder-shown):valid {
-      border-color: var(--salmão-principal);
-      background-color: #fff5f5;
-    }
-
-    /* Mensagem de ajuda sutil */
-    .help-text {
-      font-size: 12px;
-      color: var(--salmão-escuro);
-      margin-top: 5px;
-      display: block;
-    }
-
-    /* Adicionando ícones visuais */
-    label::before {
-      content: '✧';
-      margin-right: 5px;
-      color: var(--salmão-principal);
-      font-size: 14px;
-    }
-
-    /* Estilo adicional para o título com ícone */
-    h1::before, h1::after {
-      content: '✧';
-      margin: 0 15px;
-      color: #fff;
-      font-size: 0.8em;
-      opacity: 0.8;
-    }
-
-    /* Scrollbar personalizada */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--salmão-suave);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(135deg, var(--salmão-principal), var(--salmão-claro));
-      border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(135deg, var(--salmão-claro), var(--salmão-principal));
-    }
-  </style>
+        /* Responsividade */
+        @media (max-width: 480px) {
+            .register-container {
+                padding: 30px 20px;
+            }
+            .logo {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Elementos decorativos -->
+    <div class="decorative-bg decor-1"><i class="fas fa-feather-alt"></i></div>
+    <div class="decorative-bg decor-2"><i class="fas fa-spa"></i></div>
+    <div class="decorative-bg decor-3"><i class="fas fa-cut"></i></div>
 
-  <h1>✧ Divine Studio ✧</h1>
+    <div class="register-container">
+        <div class="logo">Divine Studio</div>
+        <div class="slogan">Beleza & Elegância</div>
 
-  <form action="#" method="post">
+        <h2>Criar sua conta</h2>
 
-    <p>
-      <label for="nome">Nome do cliente</label>
-      <input type="text" id="nome" name="nome" placeholder="Digite o nome completo" required>
-      <span class="help-text">Nome completo sem abreviações</span>
-    </p>
+        <form id="registerForm">
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Nome completo</label>
+                <input type="text" id="nome" placeholder="Seu nome completo" required>
+            </div>
 
-    <p>
-      <label for="telefone">Telefone / WhatsApp</label>
-      <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required>
-      <span class="help-text">Inclua o DDD</span>
-    </p>
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> E-mail</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+            </div>
 
-    <p>
-      <label for="servico">Serviço</label>
-      <select id="servico" name="servico" required>
-        <option value="" disabled selected>Selecione um serviço</option>
-        <option value="corte">✂️ Corte de cabelo</option>
-        <option value="escova">💨 Escova</option>
-        <option value="quimica">🧪 Química (progressiva, luzes etc.)</option>
-        <option value="barba">🧔 Barba</option>
-        <option value="outro">✨ Outro</option>
-      </select>
-    </p>
+            <div class="form-group">
+                <label><i class="fas fa-phone-alt"></i> Telefone (opcional)</label>
+                <input type="tel" id="telefone" placeholder="(11) 99999-9999">
+            </div>
 
-    <p>
-      <label for="profissional">Profissional</label>
-      <input type="text" id="profissional" name="profissional" placeholder="Nome do cabeleireiro">
-      <span class="help-text">Deixe em branco para escolha automática</span>
-    </p>
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> Senha</label>
+                <input type="password" id="senha" placeholder="Crie uma senha" required>
+            </div>
 
-    <div class="datetime-grid">
-      <p>
-        <label for="data">Data</label>
-        <input type="date" id="data" name="data" required>
-      </p>
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> Confirmar senha</label>
+                <input type="password" id="confirmar" placeholder="Digite a senha novamente" required>
+            </div>
 
-      <p>
-        <label for="hora">Hora</label>
-        <input type="time" id="hora" name="hora" required>
-      </p>
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Cadastrar</button>
+                <button type="reset" class="btn btn-secondary"><i class="fas fa-undo-alt"></i> Limpar</button>
+            </div>
+        </form>
+
+        <div class="login-link">
+            Já possui uma conta? <a href="index.html">Faça login</a>
+        </div>
     </div>
 
-    <p>
-      <label for="obs">Observações</label>
-      <textarea id="obs" name="obs" rows="4" placeholder="Ex.: tipo de cabelo, preferências, alergias..."></textarea>
-      <span class="help-text">Informações importantes para o atendimento</span>
-    </p>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
 
-    <div class="button-group">
-      <button type="submit">✓ Cadastrar Agendamento</button>
-      <button type="reset">↺ Limpar</button>
-    </div>
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const senha = document.getElementById('senha').value;
+            const confirmar = document.getElementById('confirmar').value;
 
-  </form>
+            if (!nome || !email || !senha || !confirmar) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
 
-  <!-- Script para validação e melhor experiência -->
-  <script>
-    // Adiciona máscara simples para telefone
-    document.getElementById('telefone').addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
-      if (value.length > 11) value = value.slice(0, 11);
-      
-      if (value.length > 10) {
-        value = value.replace(/^(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-      } else if (value.length > 5) {
-        value = value.replace(/^(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
-      } else if (value.length > 2) {
-        value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
-      } else if (value.length > 0) {
-        value = value.replace(/^(\d*)/, '($1');
-      }
-      
-      e.target.value = value;
-    });
+            if (senha !== confirmar) {
+                alert('As senhas não coincidem.');
+                return;
+            }
 
-    // Define data mínima como hoje
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('data').min = today;
+            // Simulação de cadastro bem-sucedido
+            alert('Conta criada com sucesso! Redirecionando para o login.');
+            // Aqui você poderia enviar os dados para um backend via fetch
 
-    // Animação adicional para o formulário
-    const form = document.querySelector('form');
-    form.addEventListener('mouseenter', function() {
-      this.style.transition = 'all 0.3s ease';
-    });
-
-    // REDIRECIONAMENTO APÓS CADASTRO
-    form.addEventListener('submit', function(event) {
-      event.preventDefault(); // Impede o envio real para manter a simulação
-
-      // Aqui você poderia adicionar uma validação dos campos, se desejar
-      // Exemplo simples: verificar se os campos obrigatórios estão preenchidos
-      const nome = document.getElementById('nome').value.trim();
-      const telefone = document.getElementById('telefone').value.trim();
-      const data = document.getElementById('data').value;
-      const hora = document.getElementById('hora').value;
-
-      if (!nome || !telefone || !data || !hora) {
-        alert('Por favor, preencha todos os campos obrigatórios.');
-        return;
-      }
-
-      // Simula um cadastro bem-sucedido
-      alert('Cadastro realizado com sucesso! Redirecionando para o login...');
-
-      // Redireciona para a página de login
-      window.location.href = 'index.html';
-    });
-  </script>
-
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>

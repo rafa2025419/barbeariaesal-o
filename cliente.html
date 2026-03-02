@@ -1525,8 +1525,9 @@
                 showScreen('screen-login');
             });
             
-            document.getElementById('option-no-account').addEventListener('click', function() {
-                showScreen('screen-register');
+document.getElementById('option-no-account').addEventListener('click', function() {
+                // Redireciona para a página de cadastro externa
+                window.location.href = 'cadastro.html';
             });
             
             // Botões de voltar
