@@ -69,6 +69,7 @@
             background-clip: text;
             color: transparent;
             text-decoration: none;
+            cursor: pointer;
         }
 
         .professional-info {
@@ -110,6 +111,7 @@
         .header-stats {
             display: flex;
             gap: 25px;
+            align-items: center;
         }
 
         .stat-item {
@@ -126,6 +128,27 @@
             font-size: 0.8rem;
             color: var(--texto-claro);
             margin-top: 5px;
+        }
+
+        .logout-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--salmão-fundo);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--salmão-escuro);
+            cursor: pointer;
+            border: 1px solid var(--salmão-suave);
+            transition: all 0.3s;
+            margin-left: 15px;
+        }
+
+        .logout-btn:hover {
+            background: var(--salmão-suave);
+            color: var(--salmão-principal);
+            transform: translateY(-2px);
         }
 
         /* Dashboard Principal */
@@ -741,7 +764,7 @@
     <!-- Header Profissional -->
     <header class="professional-header">
         <div class="container header-container">
-            <a href="#" class="logo">Divine Studio</a>
+            <a href="profissional.html" class="logo">Divine Studio</a>
             <div class="professional-info">
                 <div class="pro-avatar">JS</div>
                 <div class="pro-details">
@@ -761,6 +784,10 @@
                 <div class="stat-item">
                     <div class="stat-value">4.9</div>
                     <div class="stat-label">Avaliação</div>
+                </div>
+                <!-- Botão de logout -->
+                <div class="logout-btn" onclick="logout()" title="Sair">
+                    <i class="fas fa-sign-out-alt"></i>
                 </div>
             </div>
         </div>
@@ -802,6 +829,15 @@
                     <h3 class="action-title">Ver Consultas</h3>
                     <p class="action-description">Visualizar agenda completa</p>
                 </div>
+
+                <!-- Administração do Salão (novo card) -->
+                <div class="action-card" onclick="goToAdmin()">
+                    <div class="action-icon">
+                        <i class="fas fa-store-alt"></i>
+                    </div>
+                    <h3 class="action-title">Administração</h3>
+                    <p class="action-description">Gerenciar salão, funcionários e configurações</p>
+                </div>
             </div>
 
             <!-- Agenda do Dia -->
@@ -826,6 +862,7 @@
         </div>
     </main>
 
+    <!-- Modais (mantidos iguais) -->
     <!-- Modal: Agendar Consulta -->
     <div class="modal-overlay" id="scheduleModal">
         <div class="modal">
@@ -1340,12 +1377,25 @@
             document.getElementById('cancelConfirmationDetails').textContent = appointmentDetails;
         }
 
+        // Funções de redirecionamento
+        function goToAdmin() {
+            window.location.href = 'admin.html';
+        }
+
+        function logout() {
+            if (confirm('Deseja realmente sair?')) {
+                window.location.href = 'index.html';
+            }
+        }
+
         // Configurar event listeners
         function setupEventListeners() {
-            // Cards de ação
+            // Cards de ação (os três primeiros mantêm as funções originais)
             document.getElementById('scheduleAppointment').addEventListener('click', openScheduleModal);
             document.getElementById('cancelAppointment').addEventListener('click', openCancelModal);
             document.getElementById('viewAppointments').addEventListener('click', openViewModal);
+            
+            // O quarto card (Administração) já tem onclick no HTML, então não precisa de listener extra
             
             // Navegação de data
             document.getElementById('prevDay').addEventListener('click', function() {
