@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+var <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -1176,7 +1176,14 @@
                 showScreen('screen-dashboard');
                 document.getElementById('user-name').textContent = currentUser.name.split(' ')[0];
             } else {
-                showScreen('screen-start');
+                // Verificar se há nome de cliente salvo no localStorage (vindo da tela de login)
+                const clientName = localStorage.getItem('clientName');
+                if (clientName) {
+                    showScreen('screen-dashboard');
+                    document.getElementById('user-name').textContent = clientName.split(' ')[0];
+                } else {
+                    showScreen('screen-start');
+                }
             }
         }
 
@@ -1808,7 +1815,7 @@ document.getElementById('option-no-account').addEventListener('click', function(
             document.getElementById('next-month').addEventListener('click', function() {
                 currentMonth++;
                 if (currentMonth > 11) {
-                    currentMonth = 0;
+                     currentMonth = 0;
                     currentYear++;
                 }
                 renderCalendar();

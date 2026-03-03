@@ -252,6 +252,10 @@
         <!-- Formulário de login -->
         <form id="loginForm">
             <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" class="form-control" id="name" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
                 <i class="fas fa-envelope"></i>
                 <input type="email" class="form-control" id="email" placeholder="E-mail" required>
             </div>
@@ -285,11 +289,12 @@
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Evita recarregar a página
 
+            const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value.trim();
 
             // Validação simples
-            if (!email || !password) {
+            if (!name || !email || !password) {
                 alert('Por favor, preencha todos os campos.');
                 return;
             }
@@ -297,9 +302,13 @@
             // Simulação de login - Aqui você pode integrar com uma API real
             // Por enquanto, redireciona baseado no perfil selecionado
             if (selectedProfile === 'client') {
+                // Salvar o nome do cliente no localStorage
+                localStorage.setItem('clientName', name);
                 // Redirecionar para a página do cliente
                 window.location.href = 'cliente.html';
             } else {
+                // Salvar o nome do profissional no localStorage
+                localStorage.setItem('professionalName', name);
                 // Redirecionar para a página do cabeleireiro
                 window.location.href = 'profissional.html';
             }
